@@ -1,0 +1,5 @@
+{
+  "name": "LabFlow",
+  "description": "A comprehensive daily lab work assistant for biochemists featuring dilution calculators, buffer preparation, lab planner, protocol generator, reagent tracker, and data visualization with offline storage.",
+  "requestFramePermissions": []
+}
