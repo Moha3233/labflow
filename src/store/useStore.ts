@@ -47,10 +47,19 @@ export type Protocol = {
   runs?: ProtocolRun[];
 };
 
+export type Note = {
+  id: string;
+  title: string;
+  content: string;
+  date: string;
+  type: 'daily' | 'experiment' | 'scientific' | 'general';
+};
+
 interface AppState {
   tasks: Task[];
   reagents: Reagent[];
   protocols: Protocol[];
+  notes: Note[];
   addTask: (task: Task) => void;
   toggleTask: (id: string, dateStr?: string) => void;
   updateTask: (id: string, updates: Partial<Task>) => void;
@@ -63,6 +72,10 @@ interface AppState {
   updateProtocol: (id: string, protocol: Partial<Protocol>) => void;
   addProtocolRun: (protocolId: string, run: ProtocolRun) => void;
   deleteProtocolRun: (protocolId: string, runId: string) => void;
+  addNote: (note: Note) => void;
+  updateNote: (id: string, note: Partial<Note>) => void;
+  deleteNote: (id: string) => void;
+  importData: (data: Partial<AppState>) => void;
 }
 
 export const useStore = create<AppState>()(
@@ -71,6 +84,8 @@ export const useStore = create<AppState>()(
       tasks: [],
       reagents: [],
       protocols: [],
+      notes: [],
+      importData: (data) => set((state) => ({ ...state, ...data })),
       addTask: (task) => set((state) => ({ tasks: [...state.tasks, task] })),
       toggleTask: (id, dateStr) =>
         set((state) => ({
@@ -132,6 +147,16 @@ export const useStore = create<AppState>()(
               : p
           ),
         })),
+      addNote: (note) =>
+        set((state) => ({ notes: [...state.notes, note] })),
+      updateNote: (id, updatedNote) =>
+        set((state) => ({
+          notes: state.notes.map((n) =>
+            n.id === id ? { ...n, ...updatedNote } : n
+          ),
+        })),
+      deleteNote: (id) =>
+        set((state) => ({ notes: state.notes.filter((n) => n.id !== id) })),
     }),
     {
       name: 'labflow-storage', // unique name for localStorage key

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
@@ -115,9 +115,11 @@ export function DataVisualizer() {
           <h1 className="text-3xl font-bold tracking-tight">Data Visualizer</h1>
           <p className="text-muted-foreground">Plot and analyze your experimental data.</p>
         </div>
-        <Button variant="outline" onClick={handlePrint} className="print:hidden w-full sm:w-auto">
-          <Printer className="w-4 h-4 mr-2" /> Print Chart
-        </Button>
+        <div className="flex gap-2 w-full sm:w-auto">
+          <Button variant="outline" onClick={handlePrint} className="print:hidden flex-1 sm:flex-none" disabled={data.length === 0}>
+            <Printer className="w-4 h-4 mr-2" /> Print Chart
+          </Button>
+        </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">

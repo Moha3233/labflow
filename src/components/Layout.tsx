@@ -13,12 +13,15 @@ import {
   TestTube2,
   Palette,
   Menu,
+  StickyNote,
+  Settings as SettingsIcon,
 } from 'lucide-react';
 import { Button } from './ui/button';
 import { ScrollArea } from './ui/scroll-area';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from './ui/sheet';
 import { useState } from 'react';
+import { QuoteWidget } from './QuoteWidget';
 
 const navItems = [
   { name: 'Dashboard', path: '/', icon: LayoutDashboard },
@@ -27,6 +30,8 @@ const navItems = [
   { name: 'Protocol Gen', path: '/protocol', icon: FileText },
   { name: 'Reagent Tracker', path: '/reagents', icon: TestTube2 },
   { name: 'Data Visualizer', path: '/visualizer', icon: LineChart },
+  { name: 'Notes', path: '/notes', icon: StickyNote },
+  { name: 'Settings', path: '/settings', icon: SettingsIcon },
   { name: 'Help', path: '/help', icon: HelpCircle },
 ];
 
@@ -201,8 +206,13 @@ export function Layout() {
             </Button>
           </div>
         </header>
-        <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6">
-          <Outlet />
+        <div className="flex-1 min-h-0 overflow-y-auto p-4 sm:p-6 flex flex-col">
+          <div className="flex justify-end shrink-0 mb-6">
+            <QuoteWidget />
+          </div>
+          <div className="flex-1">
+            <Outlet />
+          </div>
         </div>
       </main>
     </div>

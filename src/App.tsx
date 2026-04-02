@@ -13,6 +13,8 @@ import { ProtocolGenerator } from './pages/ProtocolGenerator';
 import { ReagentTracker } from './pages/ReagentTracker';
 import { DataVisualizer } from './pages/DataVisualizer';
 import { Help } from './pages/Help';
+import { Notes } from './pages/Notes';
+import { Settings } from './pages/Settings';
 
 export default function App() {
   return (
@@ -26,7 +28,9 @@ export default function App() {
             <Route path="protocol" element={<ProtocolGenerator />} />
             <Route path="reagents" element={<ReagentTracker />} />
             <Route path="visualizer" element={<DataVisualizer />} />
+            <Route path="notes" element={<Notes />} />
             <Route path="help" element={<Help />} />
+            <Route path="settings" element={<Settings />} />
           </Route>
         </Routes>
       </Router>

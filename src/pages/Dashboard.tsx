@@ -5,7 +5,7 @@ import { Checkbox } from '../components/ui/checkbox';
 import { Calendar } from '../components/ui/calendar';
 import { ScrollArea } from '../components/ui/scroll-area';
 import { Link } from 'react-router-dom';
-import { Beaker, Calculator, Calendar as CalendarIcon, FileText, LineChart, TestTube2, AlertTriangle } from 'lucide-react';
+import { Beaker, Calculator, Calendar as CalendarIcon, FileText, LineChart, TestTube2, AlertTriangle, StickyNote } from 'lucide-react';
 import { format, isBefore, addDays } from 'date-fns';
 import { isTaskOnDate } from '../lib/utils';
 
@@ -22,6 +22,7 @@ export function Dashboard() {
     { name: 'Lab Planner', path: '/planner', icon: CalendarIcon, color: 'text-purple-500' },
     { name: 'Protocol Gen', path: '/protocol', icon: FileText, color: 'text-orange-500' },
     { name: 'Reagents', path: '/reagents', icon: TestTube2, color: 'text-red-500' },
+    { name: 'Notes', path: '/notes', icon: StickyNote, color: 'text-yellow-500' },
     { name: 'Visualizer', path: '/visualizer', icon: LineChart, color: 'text-indigo-500' },
   ];
 
